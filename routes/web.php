@@ -13,9 +13,13 @@ Route::get("/templating", function () {
     return view("page.layouts.main");
 });
 
-Route::get("/login", [LoginController::class, "login"]);
+Route::group(["middleware" => ["guest"]], function () {
+    Route::get("/login", [LoginController::class, "login"]);
 Route::post("/login", [LoginController::class, "post_login"]);
+});
 
-Route::prefix("super_admin")->group(function() {
-    Route::get("/dashboard", [AppController::class, "dashboard"]);
+Route::group(["middleware" => ["is_admin"]], function () {
+    Route::prefix("super_admin")->group(function() {
+        Route::get("/dashboard", [AppController::class, "dashboard"]);
+    });
 });
