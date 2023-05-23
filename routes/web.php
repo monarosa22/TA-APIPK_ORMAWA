@@ -23,3 +23,11 @@ Route::group(["middleware" => ["is_admin"]], function () {
         Route::get("/dashboard", [AppController::class, "dashboard"]);
     });
 });
+
+Route::prefix("wadir")->group(function() {
+    Route::get("/dashboard", [AppController::class, "dashboard"]);
+});
+
+Route::prefix("ormawa")->group(function() {
+    Route::get("/dashboard", [AppController::class, "dashboard"]);
+});
