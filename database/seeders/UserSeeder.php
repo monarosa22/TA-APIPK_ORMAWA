@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             "id"=>Uuid::uuid4()->getHex(),
             "name"=>"HIMATIF",
             "email"=>"himatif@gmail.com",
-            "password"=> bcrypt("wadir"),
+            "password"=> bcrypt("ormawa"),
             "role"=>"ormawa"
         ]);
 

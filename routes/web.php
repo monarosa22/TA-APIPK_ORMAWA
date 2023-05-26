@@ -31,3 +31,4 @@ Route::prefix("wadir")->group(function() {
 Route::prefix("ormawa")->group(function() {
     Route::get("/dashboard", [AppController::class, "dashboard"]);
 });
+Route::get("/logout", [LoginController::class, "logout"]);
