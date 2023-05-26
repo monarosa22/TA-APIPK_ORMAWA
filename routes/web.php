@@ -25,10 +25,10 @@ Route::group(["middleware" => ["is_admin"]], function () {
 });
 
 Route::prefix("wadir")->group(function() {
-    Route::get("/dashboard", [AppController::class, "dashboard"]);
+    Route::get("/dashboard", [AppController::class, "dashboard_wadir"]);
 });
 
 Route::prefix("ormawa")->group(function() {
-    Route::get("/dashboard", [AppController::class, "dashboard"]);
+    Route::get("/dashboard", [AppController::class, "dashboard_ormawa"]);
 });
 Route::get("/logout", [LoginController::class, "logout"]);
