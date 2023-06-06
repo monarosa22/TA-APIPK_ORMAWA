@@ -19,16 +19,23 @@ Route::post("/login", [LoginController::class, "post_login"]);
 });
 
 Route::group(["middleware" => ["is_admin"]], function () {
-    Route::prefix("super_admin")->group(function() {
-        Route::get("/dashboard", [AppController::class, "dashboard"]);
+    Route::group(["middleware" => ["can:admin"]], function () {
+        Route::prefix("super_admin")->group(function() {
+            Route::get("/dashboard", [AppController::class, "dashboard"]);
+        });
     });
-});
 
-Route::prefix("wadir")->group(function() {
-    Route::get("/dashboard", [AppController::class, "dashboard_wadir"]);
-});
+    Route::group(["middleware" => ["can:wadir"]], function () {
+        Route::prefix("wadir")->group(function() {
+            Route::get("/dashboard", [AppController::class, "dashboard_wadir"]);
+        });
+    });
 
-Route::prefix("ormawa")->group(function() {
-    Route::get("/dashboard", [AppController::class, "dashboard_ormawa"]);
+    Route::group(["middleware" => ["can:ormawa"]], function () {
+        Route::prefix("ormawa")->group(function() {
+            Route::get("/dashboard", [AppController::class, "dashboard_ormawa"]);
+        });
+    });
+
+    Route::get("/logout", [LoginController::class, "logout"]);
 });
-Route::get("/logout", [LoginController::class, "logout"]);
