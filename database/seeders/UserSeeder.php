@@ -13,26 +13,29 @@ class UserSeeder extends Seeder
     {
         User::create([
             "id"=>Uuid::uuid4()->getHex(),
-            "name"=>"Super Admin",
+            "nama"=>"Super Admin",
             "email"=>"super_admin@gmail.com",
             "password"=> bcrypt("super_admin"),
-            "role"=>"admin"
+            "role"=>"admin",
+            "status"=> 1
         ]);
 
         User::create([
             "id"=>Uuid::uuid4()->getHex(),
-            "name"=>"Wadir",
+            "nama"=>"Wadir",
             "email"=>"wadir@gmail.com",
-            "password"=> bcrypt("wadir"),
-            "role"=>"wadir"
+            "password"=> bcrypt("wadir123"),
+            "role"=>"wadir",
+            "status"=> 1
         ]);
 
         User::create([
             "id"=>Uuid::uuid4()->getHex(),
-            "name"=>"HIMATIF",
+            "nama"=>"Himatif",
             "email"=>"himatif@gmail.com",
-            "password"=> bcrypt("ormawa"),
-            "role"=>"ormawa"
+            "password"=> bcrypt("himatif123"),
+            "role"=>"ormawa",
+            "status"=> 1
         ]);
 
     }
