@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class IzinKegiatan extends Model
+{
+    use HasFactory, SoftDeletes;
+
+    protected $table = "izin_kegiatan";
+
+    protected $guarded = [''];
+
+    public $incrementing = false;
+
+    protected $keyType = "string";
+
+    public $primaryKey = "id";
+}

@@ -13,17 +13,25 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
-    protected $guarded = [''];
 
-    protected $hidden = [
-        'password',
-    ];
+    protected $guarded = [''];
 
     public $incrementing = false;
 
     protected $keyType = "string";
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public $primaryKey = "id";
+
+    // protected $hidden = [
+    //     'password',
+    // ];
+
+    // public $incrementing = false;
+
+    // protected $keyType = "string";
+
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
+
 }
