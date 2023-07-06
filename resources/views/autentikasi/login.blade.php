@@ -26,26 +26,26 @@
                     <div class="card-body">
                         <div class="image">
                             <center>
-                                <img src="{{ url('/image/logo-polindra.png') }}" style="width: 20%; height: 20%">
+                                <img src="{{ url('/image/logo-polindra.png') }}" style="width: 20%; height: 20%; margin-top:8%">
                             </center>
                         </div>
-                        <h4 class="text-center" style="margin-top: 20px">Aplikasi Pengajuan Izin dan Pelaporan Kegiatan Organisasi Mahasiswa</h4>
+                        <h5 class="text-center" style="margin-top: 20px">Aplikasi Pengajuan Izin dan Pelaporan Kegiatan Organisasi Mahasiswa</h5>
                         <h6 class="text-center" style="color: gray">
                             Politeknik Negeri Indramayu
                         </h6>
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top:15%">
                             <label for="email">E - MAIL</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan E - Mail">
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="password">KATA SANDI</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password" required data-eye>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password" data-eye>
                         </div>
 
                         <br>
-                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; background-color: #00A0F0">
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-bottom:15%; background-color: #00A0F0">
                             Masuk
                         </button>
                     </div>

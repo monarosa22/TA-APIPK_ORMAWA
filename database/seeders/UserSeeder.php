@@ -13,9 +13,9 @@ class UserSeeder extends Seeder
     {
         User::create([
             "id"=>Uuid::uuid4()->getHex(),
-            "nama"=>"Super Admin",
-            "email"=>"super_admin@gmail.com",
-            "password"=> bcrypt("super_admin"),
+            "nama"=>"Administrator",
+            "email"=>"admin@gmail.com",
+            "password"=> bcrypt("administrator"),
             "role"=>"admin",
             "status"=> 1
         ]);

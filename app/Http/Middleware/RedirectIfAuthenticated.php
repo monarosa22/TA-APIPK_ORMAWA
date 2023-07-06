@@ -17,10 +17,15 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, $guard =NULL)
     {
-        if(Auth::guard($guard)->check()) {
-            return redirect("/super_admin/dashboard");
+        if (Auth::guard($guard)->check()) {
+            if (Auth::user()->role == "admin") {
+                return redirect("/super_admin/dashboard");
+            } else if (Auth::user()->role == "wadir") {
+                return redirect("/wadir/dashboard");
+            } else if (Auth::user()->role == "ormawa") {
+                return redirect("/ormawa/dashboard");
+            }
         }
-
         return $next($request);
     }
 }

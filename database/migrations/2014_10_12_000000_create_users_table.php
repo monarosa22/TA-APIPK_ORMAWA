@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama',100);
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer("create_by")->nullable();
+            $table->string("create_by", 50)->nullable();
             $table->string("foto")->nullable();
             $table->enum("role", ["admin","wadir", "ormawa"]);
             $table->enum("status", [1, 0])->default(0);

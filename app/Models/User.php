@@ -22,16 +22,4 @@ class User extends Authenticatable
 
     public $primaryKey = "id";
 
-    // protected $hidden = [
-    //     'password',
-    // ];
-
-    // public $incrementing = false;
-
-    // protected $keyType = "string";
-
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
-
 }
