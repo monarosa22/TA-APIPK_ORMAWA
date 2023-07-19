@@ -1,5 +1,5 @@
 <div id="sidebar-nav" class="sidebar">
-    <div class="sidebar-scroll">
+    <div class="sidebar-scroll" style="margin-top: 30px;">
         <nav>
             @if (Auth::user()->role == "admin")
                 @can("admin")

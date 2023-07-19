@@ -1,7 +1,7 @@
 <nav>
     <ul class="nav">
         <li>
-            <a href="{{ url('/>wadir/dashboard') }}" class="active">
+            <a href="{{ url('/wadir/dashboard') }}" class="active">
                 <i class="lnr lnr-home"></i>
                 <span>Dashboard</span>
             </a>

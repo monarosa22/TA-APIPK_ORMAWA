@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\Autentikasi\LoginController;
+use App\Http\Controllers\Ormawa\IzinKegiatanController;
 use App\Http\Controllers\SuperAdmin\PenggunaController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,14 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
 
     Route::prefix("ormawa")->group(function () {
         Route::get("/dashboard", [AppController::class, "dashboard_ormawa"]);
+
+        Route::prefix("izin_kegiatan")->group(function() {
+            Route::get("/", [IzinKegiatanController::class, "index"]);
+            Route::get("/create", [IzinKegiatanController::class, "create"]);
+            Route::post("/store", [IzinKegiatanController::class, "store"]);
+            Route::get("/show/{id}", [IzinKegiatanController::class, "show"]);
+            Route::delete("/destroy/{id}", [IzinKegiatanController::class,"destroy"]);
+        });
     });
 
     Route::get("/logout", [LoginController::class, "logout"]);
