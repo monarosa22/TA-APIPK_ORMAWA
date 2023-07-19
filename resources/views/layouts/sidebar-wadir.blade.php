@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            <a href="elements.html" class="">
+            <a href="{{ url('/wadir/izin_kegiatan') }}" class="">
                 <i class="fa fa-edit"></i>
                 <span>Izin Kegiatan</span>
             </a>

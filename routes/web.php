@@ -4,6 +4,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\Autentikasi\LoginController;
 use App\Http\Controllers\Ormawa\IzinKegiatanController;
 use App\Http\Controllers\SuperAdmin\PenggunaController;
+use App\Http\Controllers\Wadir\IzinKegiatanController as WadirIzinKegiatanController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(["middleware" => ["guest"]], function () {
@@ -30,6 +31,12 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
 
     Route::prefix("wadir")->group(function () {
         Route::get("/dashboard", [AppController::class, "dashboard_wadir"]);
+
+        Route::prefix("izin_kegiatan")->group(function () {
+            Route::get("/", [WadirIzinKegiatanController::class, "index"]);
+            Route::get("/show/{id}", [WadirIzinKegiatanController::class, "show"]);
+            Route::put("/{id}", [WadirIzinKegiatanController::class, "update"]);
+        });
     });
 
     Route::prefix("ormawa")->group(function () {

@@ -19,4 +19,9 @@ class IzinKegiatan extends Model
     protected $keyType = "string";
 
     public $primaryKey = "id";
+
+    public function users()
+    {
+        return $this->belongsTo("App\Models\User", "user_id", "id");
+    }
 }
