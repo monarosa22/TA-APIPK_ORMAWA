@@ -6,7 +6,7 @@
         </a>
     </li>
     <li>
-        <a href="elements.html" class="">
+        <a href="{{ url('super_admin/izin_kegiatan') }}" class="">
             <i class="fa fa-edit"></i>
             <span>Izin Kegiatan</span>
         </a>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\Autentikasi\LoginController;
 use App\Http\Controllers\Ormawa\IzinKegiatanController;
+use App\Http\Controllers\SuperAdmin\IzinKegiatanController as SuperAdminIzinKegiatanController;
 use App\Http\Controllers\SuperAdmin\PenggunaController;
 use App\Http\Controllers\Wadir\IzinKegiatanController as WadirIzinKegiatanController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,12 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
     Route::prefix("super_admin")->group(function () {
         Route::get("/dashboard", [AppController::class, "dashboard_admin"]);
 
+        Route::prefix("izin_kegiatan")->group(function () {
+            Route::get("/", [SuperAdminIzinKegiatanController::class, "index"]);
+            Route::get("/show/{id}", [SuperAdminIzinKegiatanController::class, "show"]);
+            Route::put("/update/{id}", [SuperAdminIzinKegiatanController::class, "update"]);
+        });
+
         Route::prefix("pengguna")->group(function () {
             Route::get("/", [PenggunaController::class, "index"]);
             Route::get("/create", [PenggunaController::class, "create"]);
@@ -25,7 +32,6 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::get("/edit/{id}", [PenggunaController::class, "edit"]);
             Route::put("/update/{id}", [PenggunaController::class, "update"]);
             Route::delete("/destroy/{id}", [PenggunaController::class,"destroy"]);
-
         });
     });
 
