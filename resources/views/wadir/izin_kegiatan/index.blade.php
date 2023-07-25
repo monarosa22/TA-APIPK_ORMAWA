@@ -33,11 +33,27 @@
                                     <i class="fa fa-download"></i>
                                 </td>
                                 <td class="text-center">
-                                    <i class="fa fa-download"></i>
+                                    @if (@empty($item["file_surat_balasan"]))
+                                    <strong>
+                                        <i>Belum ada Surat Balasan</i>
+                                    </strong>
+                                    @else
+                                    <a  target="_blank">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                    @endif
                                 </td>
                                 <td class="text-center">{{ $item["tempat"] }}</td>
                                 <td class="text-center">
-                                    -
+                                    @if ($item["status"] == "0")
+                                    <button class="btn btn-warning btn-sm">
+                                        <i class="fa fa-times"></i> Belum dikonfirmasi
+                                    </button>
+                                    @elseif ($item["status"] == "1")
+                                    <button class="btn btn-success btn-sm">
+                                        <i class="fa fa-check"></i> Sudah dikonfirmasi
+                                    </button>
+                                    @endif
                                 </td>
                                 <td class="text-center">
                                     <a href="{{ url('/wadir/izin_kegiatan/show/' .$item["id"]) }}" class="btn btn-info btn-sm">
