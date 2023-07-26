@@ -4,10 +4,7 @@
 
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid" style="padding-top: 10px">
-            {{-- <button href="{{url('/super_admin/pengguna') }}" class="btn btn-danger btn-sm">
-                <i class="fa fa-sign-out">Kembali </i>
-            </button> --}}
+        <div class="container-fluid" style="padding-top: 20px">
             <a href="{{url('/super_admin/pengguna') }}" class="btn btn-danger btn-sm">
                 <i class="fa fa-sign-out">Kembali</i>
             </a>

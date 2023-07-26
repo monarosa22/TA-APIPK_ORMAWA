@@ -12,7 +12,7 @@
         </a>
     </li>
     <li>
-        <a href="notifications.html" class="">
+        <a href="{{ url('/super_admin/laporan_kegiatan') }}" class="">
             <i class="fa fa-bar-chart"></i>
             <span>Laporan Kegiatan</span>
         </a>

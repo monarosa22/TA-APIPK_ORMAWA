@@ -3,9 +3,12 @@
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\Autentikasi\LoginController;
 use App\Http\Controllers\Ormawa\IzinKegiatanController;
+use App\Http\Controllers\Ormawa\LaporanKegiatanController;
 use App\Http\Controllers\SuperAdmin\IzinKegiatanController as SuperAdminIzinKegiatanController;
+use App\Http\Controllers\SuperAdmin\LaporanKegiatanController as SuperAdminLaporanKegiatanController;
 use App\Http\Controllers\SuperAdmin\PenggunaController;
 use App\Http\Controllers\Wadir\IzinKegiatanController as WadirIzinKegiatanController;
+use App\Http\Controllers\Wadir\LaporanKegiatanController as WadirLaporanKegiatanController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(["middleware" => ["guest"]], function () {
@@ -23,6 +26,12 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::get("/", [SuperAdminIzinKegiatanController::class, "index"]);
             Route::get("/show/{id}", [SuperAdminIzinKegiatanController::class, "show"]);
             Route::put("/update/{id}", [SuperAdminIzinKegiatanController::class, "update"]);
+        });
+
+        Route::prefix("laporan_kegiatan")->group(function () {
+            Route::get("/", [ SuperAdminLaporanKegiatanController::class, "index"]);
+            Route::get("/show/{id}", [ SuperAdminLaporanKegiatanController::class, "show"]);
+            Route::get("/lpj/{id}", [ SuperAdminLaporanKegiatanController::class, "lpj"]);
         });
 
         Route::prefix("pengguna")->group(function () {
@@ -43,6 +52,13 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::get("/show/{id}", [WadirIzinKegiatanController::class, "show"]);
             Route::put("/{id}", [WadirIzinKegiatanController::class, "update"]);
         });
+
+        Route::prefix("laporan_kegiatan")->group(function () {
+            Route::get("/", [ WadirLaporanKegiatanController::class, "index"]);
+            Route::get("/show/{id}", [ WadirLaporanKegiatanController::class, "show"]);
+            Route::get("/lpj/{id}", [ WadirLaporanKegiatanController::class, "lpj"]);
+
+        });
     });
 
     Route::prefix("ormawa")->group(function () {
@@ -54,6 +70,13 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::post("/store", [IzinKegiatanController::class, "store"]);
             Route::get("/show/{id}", [IzinKegiatanController::class, "show"]);
             Route::delete("/destroy/{id}", [IzinKegiatanController::class,"destroy"]);
+        });
+
+        Route::prefix("laporan_kegiatan")->group(function () {
+            Route::get("/", [ LaporanKegiatanController::class, "index"]);
+            Route::get("/show/{id}", [ LaporanKegiatanController::class, "show"]);
+            Route::put("/update/{id}", [ LaporanKegiatanController::class, "update"]);
+            Route::get("/laporan/{id}", [ LaporanKegiatanController::class, "laporan"]);
         });
     });
 

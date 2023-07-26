@@ -1,10 +1,17 @@
+@php
+use Carbon\Carbon;
+@endphp
 @extends('layouts.main')
 
 @section('content')
 
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid" style="padding-top: 10px">
+        <div class="container-fluid" style="padding-top: 20px">
+            <a href="{{url('/wadir/izin_kegiatan') }}" class="btn btn-danger btn-sm">
+                <i class="fa fa-sign-out">Kembali</i>
+            </a>
+            <br><br>
             <div class="panel panel-headline">
                 <div class="panel-heading">
                     <h3 class="panel-title">Detail Izin Kegiatan</h3>
@@ -47,7 +54,17 @@
                                     Waktu Pelaksanaan
                                 </label>
                                 <div class="col-md-7">
-                                    {{ $detail["mulai"]}} s/d {{ $detail["akhir"]}}
+                                    @php
+                                    $mulai = Carbon::createFromFormat('Y-m-d H:i:s', $detail->mulai);
+                                    $format = $mulai->isoFormat('dddd, D MMMM YYYY HH:mm:ss');
+                                    echo $format;
+                                    @endphp
+                                    s/d
+                                    @php
+                                    $akhir = Carbon::createFromFormat('Y-m-d H:i:s', $detail->akhir);
+                                    $format = $akhir->isoFormat('dddd, D MMMM YYYY HH:mm:ss');
+                                    echo $format;
+                                    @endphp
                                 </div>
                             </div>
                         </div>

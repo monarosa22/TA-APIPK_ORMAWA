@@ -27,12 +27,12 @@
                         <i class="icon-submenu lnr lnr-chevron-down"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
+                        {{-- <li>
                             <a href="#">
                                 <i class="lnr lnr-user"></i>
                                 <span>My Profile</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ url('/logout')}}">
                                 <i class="lnr lnr-exit"></i>

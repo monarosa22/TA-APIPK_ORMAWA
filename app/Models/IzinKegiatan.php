@@ -24,4 +24,9 @@ class IzinKegiatan extends Model
     {
         return $this->belongsTo("App\Models\User", "user_id", "id");
     }
+
+    public function laporan_kegiatan()
+    {
+        return $this->hasOne("App\Models\LaporanKegiatan", "izin_kegiatan_id", "id");
+    }
 }

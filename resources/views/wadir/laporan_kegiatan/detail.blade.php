@@ -8,13 +8,13 @@ use Carbon\Carbon;
 <div class="main">
     <div class="main-content">
         <div class="container-fluid" style="padding-top: 20px">
-            <a href="{{url('/ormawa/izin_kegiatan/') }}" class="btn btn-danger btn-sm">
+            <a href="{{url('/wadir/laporan_kegiatan/') }}" class="btn btn-danger btn-sm">
                 <i class="fa fa-sign-out"> Kembali </i>
             </a>
             <br><br>
             <div class="panel panel-headline">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Detail Data Izin Kegiatan</h3>
+                    <h3 class="panel-title">Detail Laporan Kegiatan</h3>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -58,6 +58,41 @@ use Carbon\Carbon;
                                 <a href="" class="btn btn-primary btn-sm">
                                     <i class="fa fa-download"></i> Unduh File
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="file_lpj" class="control-label col-md-3"> File LPJ </label>
+                            <div class="col-md-8">
+                                @if (empty($detail["laporan_kegiatan"]["id"]))
+                                <strong>
+                                    <i>
+                                        Belum Unggah File LPJ
+                                    </i>
+                                </strong>
+                                @else
+                                <a target="_blank" href="{{ url('/wadir/laporan_kegiatan/lpj/' .$detail["laporan_kegiatan"]["id"])}}" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-download"></i> Unduh File
+                                </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="foto_dokumentasi" class="control-label col-md-3"> Foto Dokumentasi
+                            </label>
+                            <div class="col-md-8">
+                                @if (empty($detail["laporan_kegiatan"]["foto_dokumentasi"]))
+                                <strong>
+                                    <i>
+                                        Belum Unggah Foto Dokumentasi
+                                    </i>
+                                </strong>
+                                @else
+                                <img src="{{ url('storage/' .$detail["laporan_kegiatan"]["foto_dokumentasi"]) }}" style="width:150px; height:150px;">
+                                @endif
                             </div>
                         </div>
                     </div>

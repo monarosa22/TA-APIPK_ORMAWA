@@ -4,7 +4,7 @@
 
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid" style="padding-top: 10px">
+        <div class="container-fluid" style="padding-top: 20px">
             <div class="panel panel-headline">
                 <div class="panel-heading">
                     <h3 class="panel-title">Data Izin Kegiatan</h3>

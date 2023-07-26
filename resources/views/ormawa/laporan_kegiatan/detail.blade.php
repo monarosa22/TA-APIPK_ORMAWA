@@ -8,51 +8,29 @@ use Carbon\Carbon;
 <div class="main">
     <div class="main-content">
         <div class="container-fluid" style="padding-top: 20px">
-            <a href="{{url('/super_admin/izin_kegiatan') }}" class="btn btn-danger btn-sm">
-                <i class="fa fa-sign-out">Kembali</i>
+            <a href="{{url('/ormawa/laporan_kegiatan/') }}" class="btn btn-danger btn-sm">
+                <i class="fa fa-sign-out"> Kembali </i>
             </a>
             <br><br>
             <div class="panel panel-headline">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Detail Izin Kegiatan</h3>
+                    <h3 class="panel-title">Unggah Laporan Kegiatan</h3>
                 </div>
-                <form action="{{ url('/super_admin/izin_kegiatan/update/' .$detail["id"]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('/ormawa/laporan_kegiatan/update/' .$detail["id"]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
                     <div class="panel-body">
                         <div class="form-group">
                             <div class="row">
-                                <label for="nama_ormawa" class="control-label col-md-3">Nama ORMAWA</label>
-                                <div class="col-md-7">
-                                    {{ $detail["users"]["nama"]}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
                                 <label for="nama_kegiatan" class="control-label col-md-3">Nama Kegiatan</label>
-                                <div class="col-md-7">
-                                    {{ $detail["nama_kegiatan"]}}
+                                <div class="col-md-8">
+                                    {{ $detail["nama_kegiatan"] }}
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="file_surat_izin" class="control-label col-md-3">
-                                    File Surat Izin
-                                </label>
-                                <div class="col-md-7">
-                                    <a href="" class="btn btn-primary btn-sm">
-                                        <i target="_blank" class="fa fa-download"></i> Unduh File
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <label for="waktu_pelaksanaan" class="control-label col-md-3">
-                                    Waktu Pelaksanaan
-                                </label>
+                                <label for="waktu_pelaksanaan" class="control-label col-md-3">Waktu Pelaksanaan</label>
                                 <div class="col-md-7">
                                     @php
                                     $mulai = Carbon::createFromFormat('Y-m-d H:i:s', $detail->mulai);
@@ -70,38 +48,42 @@ use Carbon\Carbon;
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="tempat" class="control-label col-md-3">Tempat Pelaksanaan</label>
-                                <div class="col-md-7">
-                                    {{ $detail["tempat"]}}
+                                <label for="tempat_pelaksanaan" class="control-label col-md-3">Tempat Pelaksanaan</label>
+                                <div class="col-md-8">
+                                    {{ $detail["tempat"] }}
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="status" class="control-label col-md-3">Status</label>
-                                <div class="col-md-7">
-                                    @if ($detail["status"] == "1")
-                                    <button class="btn btn-success btn-sm">
-                                        <i class="fa fa-check">Disetujui</i>
-                                    </button>
-                                    @else
-
-                                    @endif
+                                <label for="unggah_file" class="control-label col-md-3"> File Izin Kegiatan</label>
+                                <div class="col-md-8">
+                                    <a href="" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-download"></i> Unduh File
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="file_surat_balasan" class="control-label col-md-3">Unggah Surat Balasan</label>
+                                <label for="file_lpj" class="control-label col-md-3"> Unggah File LPJ </label>
                                 <div class="col-md-7">
-                                    <input type="file" class="form-control" name="file_surat_balasan" id="file_surat_balasan">
+                                    <input type="file" class="form-control" name="file_lpj" id="file_lpj">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="foto_dokumentasi" class="control-label col-md-3"> Unggah Foto Dokumentasi </label>
+                                <div class="col-md-7">
+                                    <input type="file" class="form-control" name="foto_dokumentasi" id="foto_dokumentasi">
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <button type="reset" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i> Batal
-                        </button>
+                        </button> &nbsp
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-save"></i> Simpan
                         </button>

@@ -4,7 +4,7 @@
 
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid" style="padding-top: 10px">
+        <div class="container-fluid" style="padding-top: 20px">
             {{-- <button href="{{url('/super_admin/pengguna/create') }}" class="btn btn-primary btn-sm">
                 <i class="fa fa-plus">Tambah</i>
             </button> --}}

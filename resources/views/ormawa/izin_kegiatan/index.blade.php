@@ -4,10 +4,7 @@
 
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid" style="padding-top: 10px">
-            {{-- <button href="{{url('/super_admin/pengguna/create') }}" class="btn btn-primary btn-sm">
-                <i class="fa fa-plus">Tambah</i>
-            </button> --}}
+        <div class="container-fluid" style="padding-top: 20px">
             <a href="{{url('/ormawa/izin_kegiatan/create') }}" class="btn btn-primary btn-sm">
                 <i class="fa fa-plus">Tambah Izin Kegiatan</i>
             </a>

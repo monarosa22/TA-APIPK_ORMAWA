@@ -13,7 +13,7 @@
             </a>
         </li>
         <li>
-            <a href="notifications.html" class="">
+            <a href="{{ url('/wadir/laporan_kegiatan') }}" class="">
                 <i class="fa fa-bar-chart"></i>
                 <span>Laporan Kegiatan</span>
             </a>
