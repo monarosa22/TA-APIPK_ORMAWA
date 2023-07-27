@@ -40,7 +40,7 @@
             </a>
         </li>
         <li>
-            <a href="notifications.html" class="">
+            <a href="{{ url('/ormawa/profil_saya') }}" class="">
                 <i class="fa fa-user"></i>
                 <span>Profil Saya</span>
             </a>

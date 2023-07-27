@@ -91,7 +91,7 @@ use Carbon\Carbon;
                         <hr>
                         <button type="reset" class="btn btn-danger brn-sm">
                             <i class="fa fa-times"></i> Batal
-                        </button>
+                        </button> &nbsp;
                         <button type="submit" class="btn btn-primary brn-sm">
                             <i class="fa fa-save"></i> Simpan
                         </button>

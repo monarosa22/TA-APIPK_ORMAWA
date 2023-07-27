@@ -56,7 +56,7 @@
                         <hr>
                         <button type="reset" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i> Batal
-                        </button>
+                        </button> &nbsp;
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-save"></i> Simpan
                         </button>
