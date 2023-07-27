@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ url('') }}/assets/img/user.png" class="img-circle" alt="Avatar"> &nbsp
+                        <img src="{{ url('') }}/assets/img/user.png" class="img-circle" alt="Avatar"> &nbsp;
                         <span>
                             {{Auth::user()->nama}}
                         </span>

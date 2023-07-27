@@ -41,22 +41,3 @@ class LoginController extends Controller
         return redirect("/login");
     }
 }
-    // {
-    //     $cek = User::where("email", $request->email,)->first();
-
-    //     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-    //         $request->session()->regenerate();
-
-    //         if ($cek->role == "admin") {
-    //             return redirect()->intended("/super_admin/dashboard");
-    //         } else if ($cek->role == "wadir") {
-    //             return redirect()->intended("/wadir/dashboard");
-    //         } else if ($cek->role == "ormawa") {
-    //             return redirect()->intended("/ormawa/dashboard");
-    //         } else{
-    //             return back();
-    //         }
-    //     } else {
-    //         return back();
-    //     }
-    // }

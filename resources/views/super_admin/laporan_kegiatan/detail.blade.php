@@ -19,6 +19,14 @@ use Carbon\Carbon;
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
+                            <label for="nama_ormawa" class="control-label col-md-3">Nama ORMAWA</label>
+                            <div class="col-md-7">
+                                {{ $detail["users"]["nama"]}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             <label for="nama_kegiatan" class="control-label col-md-3">Nama Kegiatan</label>
                             <div class="col-md-8">
                                 {{ $detail["nama_kegiatan"] }}

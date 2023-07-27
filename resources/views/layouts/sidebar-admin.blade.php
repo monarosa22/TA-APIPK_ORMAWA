@@ -30,7 +30,7 @@
         </a>
     </li>
     <li>
-        <a href="notifications.html" class="">
+        <a href="{{ url('/super_admin/ganti_password') }}" class="">
             <i class="fa fa-key"></i>
             <span>Ganti Password</span>
         </a>

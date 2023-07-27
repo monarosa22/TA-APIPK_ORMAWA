@@ -14,6 +14,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
+                                <th class="text-center">Nama ORMAWA</th>
                                 <th class="text-center">Nama Kegiatan</th>
                                 <th class="text-center">File Laporan</th>
                                 <th class="text-center">File Gambar</th>
@@ -26,6 +27,7 @@
                             @foreach ($laporan as $item)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}.</td>
+                                <td>{{ $item["users"]["nama"]}}</td>
                                 <td>{{ $item["nama_kegiatan"] }}</td>
                                 {{-- <td class="text-center">{{ $item["tempat"] }}</td> --}}
                                 <td class="text-center">

@@ -1,24 +1,3 @@
-{{-- <ul class="nav">
-    <li>
-        <a href="{{ url('/ormawa/dashboard') }}" class="active">
-            <i class="lnr lnr-home"></i>
-            <span>Dashboard</span>
-        </a>
-    </li>
-    <li>
-        <a href="notifications.html" class="">
-            <i class="lnr lnr-alarm"></i>
-            <span>Izin Kegiatan</span>
-        </a>
-    </li>
-    <li>
-        <a href="notifications.html" class="">
-            <i class="lnr lnr-alarm"></i>
-            <span>Laporan Kegiatan</span>
-        </a>
-    </li>
-</ul> --}}
-
 <nav>
     <ul class="nav">
         <li>
@@ -46,7 +25,7 @@
             </a>
         </li>
         <li>
-            <a href="notifications.html" class="">
+            <a href="{{ url('/ormawa/ganti_password') }}" class="">
                 <i class="fa fa-key"></i>
                 <span>Ganti Password</span>
             </a>
