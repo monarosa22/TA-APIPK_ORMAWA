@@ -1,6 +1,6 @@
 <footer>
     <div class="container-fluid">
-        <p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
-        </p>
+        Aplikasi Pengajuan Izin dan Pelaporan Kegiatan ORMAWA POLINDRA.
+        <strong>© 2023 POLINDRA.</strong>
     </div>
 </footer>
