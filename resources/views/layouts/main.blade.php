@@ -9,6 +9,8 @@
 
     @include('layouts.css.style_css')
 
+    @yield("css")
+
 </head>
 
 <body>
@@ -27,6 +29,8 @@
     </div>
 
     @include('layouts.javascript.style_javascript')
+
+    @yield("javascript")
 
 </body>
 
