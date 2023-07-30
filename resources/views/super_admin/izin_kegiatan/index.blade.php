@@ -36,7 +36,9 @@
                                 <td>{{ $item["users"]["nama"]}}</td>
                                 <td>{{ $item["nama_kegiatan"] }}</td>
                                 <td class="text-center">
-                                    <i class="fa fa-download"></i>
+                                    <a target="_blank" href="{{ url('/super_admin/izin_kegiatan/download/' .$item->id) }}">
+                                        <i class="fa fa-download"></i>
+                                    </a>
                                 </td>
                                 <td class="text-center">
                                     @if (empty($item["file_surat_balasan"]))
@@ -44,7 +46,7 @@
                                         <i>Belum ada Surat Balasan</i>
                                     </strong>
                                     @else
-                                    <a  target="_blank">
+                                    <a target="_blank" href="{{ url('/super_admin/izin_kegiatan/download/' .$item->id) }}">
                                         <i class="fa fa-download"></i>
                                     </a>
                                     @endif
