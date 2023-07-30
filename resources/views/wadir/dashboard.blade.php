@@ -9,12 +9,12 @@
                     @if (session("message"))
                     <div class="alert alert-success">
                         <strong>{!! session("message") !!}</strong>. Selamat Datang di
-                        <strong>Aplikasi Pengajuan Izin dan Pelaporan Kegiatan ORMAWA</strong>
-                        <br>
-                        Anda Login Sebagai
-                        <strong>WADIR</strong>
+                        <strong>Aplikasi Pengajuan Izin dan Pelaporan Kegiatan ORMAWA POLINDRA!</strong>
                         <hr>
-                        <p>Silahkan Pilih Menu Untuk Memulai Program</p>
+                        Anda Login Sebagai
+                        <strong>WADIR</strong>.
+                        <br>
+                        <p>*Silahkan Pilih Menu Untuk Memulai Program!</p>
                     </div>
                     @endif
 

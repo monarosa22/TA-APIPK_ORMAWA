@@ -20,6 +20,13 @@
 <div style="margin-top: 60px"></div>
 <div class="row p-0 m-0" style="justify-content: center; align-items: center;">
     <div class="col-md-4">
+
+        @if (session("message"))
+        <div class="alert alert-danger">
+            <strong>Maaf,</strong> {{ session("message") }}
+        </div>
+        @endif
+
         <div class="card">
             <form action="{{ url('/login') }}" method="POST">
                 @csrf
@@ -36,12 +43,20 @@
 
                     <div class="form-group" style="margin-top:15%">
                         <label for="email">E - MAIL</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan E - Mail">
+                        <input type="text" class="form-control @error("email") {{ 'is-invalid' }}
+                        @enderror" name="email" id="email" placeholder="Masukkan E - Mail" value="{{ old('email') }}">
+                        @error("email")
+                        <span class="text-danger"> {{$message}} </span>
+                        @enderror
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="password">KATA SANDI</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password" data-eye>
+                        <input type="password" class="form-control @error("password") {{ 'is-invalid' }} @enderror" name="password" id="password" placeholder="Masukkan Password" data-eye>
+                        @error("password")
+                        <span class="text-danger">{{$message}}
+                        </span>
+                        @enderror
                     </div>
 
                     <br>

@@ -18,6 +18,7 @@ use App\Http\Controllers\Wadir\ProfilSayaController as WadirProfilSayaController
 use Illuminate\Support\Facades\Route;
 
 Route::group(["middleware" => ["guest"]], function () {
+    Route::get("/", [LoginController::class, "login"]);
     Route::prefix("login")->group(function () {
         Route::get("/", [LoginController::class, "login"]);
         Route::post("/", [LoginController::class, "post_login"]);
