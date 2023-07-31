@@ -100,6 +100,8 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::get("/", [IzinKegiatanController::class, "index"]);
             Route::get("/create", [IzinKegiatanController::class, "create"]);
             Route::post("/store", [IzinKegiatanController::class, "store"]);
+            Route::get("/edit/{id}", [IzinKegiatanController::class, "edit"]);
+            Route::put("/update/{id}", [IzinKegiatanController::class, "update"]);
             Route::get("/show/{id}", [IzinKegiatanController::class, "show"]);
             Route::get("/download/{id}", [IzinKegiatanController::class, "download_surat"]);
             // Route::get("/download/{id}", [IzinKegiatanController::class, "surat_balasan"]);

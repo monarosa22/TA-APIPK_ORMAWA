@@ -11,17 +11,19 @@
             <br><br>
             <div class="panel panel-headline">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Tambah Data Izin Kegiatan</h3>
+                    <h3 class="panel-title">Edit Data Izin Kegiatan</h3>
                 </div>
-                <form action="{{ url('/ormawa/izin_kegiatan/store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('/ormawa/izin_kegiatan/update/'.$edit->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method("PUT")
+                    <input type="hidden" name="file_lama" value="{{ $edit->file_surat }}">
                     <div class="panel-body">
                         <div class="form-group @error("nama_kegiatan") {{'has-error'}}
                         @enderror">
                             <div class="row">
                                 <label for="nama_kegiatan" class="control-label col-md-3">Nama Kegiatan</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="nama_kegiatan" id="nama_kegiatan" placeholder="Masukkan Nama Kegiatan" value="{{old('nama_kegiatan')}}">
+                                    <input type="text" class="form-control" name="nama_kegiatan" id="nama_kegiatan" placeholder="Masukkan Nama Kegiatan" value="{{old('nama_kegiatan') ?? $edit->nama_kegiatan ?? ''}}">
                                     @error("nama_kegiatan")
                                     <span class="text-danger"> {{$message}}
                                     </span>
@@ -33,7 +35,7 @@
                             <div class="row">
                                 <label for="mulai" class="control-label col-md-3"> Mulai Pelaksanaan</label>
                                 <div class="col-md-8">
-                                    <input type="datetime-local" class="form-control"name="mulai" id="mulai" value="{{ old('mulai') }}">
+                                    <input type="datetime-local" class="form-control"name="mulai" id="mulai" value="{{ old('mulai') ?? $edit->mulai ?? '' }}">
                                     @error("mulai")
                                         <span class="text-danger">
                                             {{$message}}
@@ -46,7 +48,7 @@
                             <div class="row">
                                 <label for="akhir" class="control-label col-md-3"> Selesai Pelaksanaan</label>
                                 <div class="col-md-8">
-                                    <input type="datetime-local" class="form-control"name="akhir" id="akhir" value="{{ old('akhir') }}">
+                                    <input type="datetime-local" class="form-control"name="akhir" id="akhir" value="{{ old('akhir') ?? $edit->akhir ?? '' }}">
                                     @error("akhir")
                                         <span class="text-danger">
                                             {{$message}}
@@ -55,11 +57,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group @error("tempat") {{ 'has-error' }}@enderror">
+                        <div class="form-group @error("tempat_pelaksanaan") {{ 'has-error' }}@enderror">
                             <div class="row">
-                                <label for="tempat" class="control-label col-md-3">Tempat Pelaksanaan</label>
+                                <label for="tempat_pelaksanaan" class="control-label col-md-3">Tempat Pelaksanaan</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="tempat" id="tempat" placeholder="Masukkan Tempat Pelaksanaan Kegiatan" value="{{ old('tempat') }}">
+                                    <input type="text" class="form-control" name="tempat" id="tempat" placeholder="Masukkan Tempat Pelaksanaan Kegiatan" value="{{ old('tempat') ?? $edit->tempat ?? '' }}">
                                     @error("tempat")
                                     <span class="text-danger">
                                         {{$message}}

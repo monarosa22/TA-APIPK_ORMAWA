@@ -23,13 +23,13 @@
                     <table class="table table-bordered" id="example">
                         <thead>
                             <tr>
-                                <th class="text-center">No.</th>
-                                <th class="text-center">Nama Kegiatan</th>
-                                <th class="text-center">File Surat</th>
-                                <th class="text-center">File Surat Balasan</th>
-                                <th class="text-center">Tempat</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Aksi</th>
+                                <th  style="text-align: center;">No.</th>
+                                <th>Nama Kegiatan</th>
+                                <th  style="text-align: center;">File Surat</th>
+                                <th  style="text-align: center;">File Surat Balasan</th>
+                                <th  style="text-align: center;">Tempat</th>
+                                <th  style="text-align: center;">Status</th>
+                                <th  style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,9 +69,9 @@
                                     <a href="{{ url('/ormawa/izin_kegiatan/show/' .$item["id"]) }}" class="btn btn-info btn-sm">
                                         <i class="fa fa-search"></i> Detail
                                     </a>
-                                    {{-- <a href="{{ url('/ormawa/izin_kegiatan/edit/' .$item["id"]) }}" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('/ormawa/izin_kegiatan/edit/' .$item["id"]) }}" class="btn btn-warning btn-sm">
                                         <i class="fa fa-edit">Edit</i>
-                                    </a> --}}
+                                    </a>
                                     <form action="{{ url('/ormawa/izin_kegiatan/destroy/' . $item["id"]) }}" method="POST" style="display:inline">
                                         @csrf
                                         @method("Delete")
