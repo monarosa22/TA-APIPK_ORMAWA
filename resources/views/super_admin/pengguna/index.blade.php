@@ -26,20 +26,44 @@
                     <table class="table table-bordered" id="example">
                         <thead>
                             <tr>
-                                <th class="text-center">No.</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Hak Akses</th>
-                                <th class="text-center">Deskripsi</th>
-                                <th class="text-center">Aksi</th>
+                                <th style="text-align: center;">No.</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th style="text-align: center;">Status</th>
+                                <th style="text-align: center;">Role</th>
+                                <th>Deskripsi</th>
+                                <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($user as $item)
                             <tr>
-                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td class="text-center">{{ $loop->iteration }}.</td>
                                 <td>{{ $item["nama"] }}</td>
                                 <td>{{ $item["email"] }}</td>
+                                <td class="text-center">
+                                    @if ($item["status"] == 0)
+                                    <form action="{{ url('/super_admin/pengguna/aktifkan/' .$item->id) }}" method="POST">
+                                        @csrf
+                                        @method("PUT")
+                                        <button type="submit" class="btn btn-success btn-sm">
+                                            Aktifkan
+                                        </button>
+                                    </form>
+                                    @elseif ($item["status"] == 1)
+                                    @if (Auth::user()->id == $item["id"])
+                                        -
+                                    @else
+                                    <form action="{{ url('/super_admin/pengguna/non_aktifkan/'.$item->id) }}" method="POST">
+                                        @csrf
+                                        @method("PUT")
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            Non-Aktifkan
+                                        </button>
+                                    </form>
+                                    @endif
+                                    @endif
+                                </td>
                                 <td class="text-center">{{ $item["role"] }}</td>
                                 <td>{{ $item["deskripsi"] }}</td>
                                 <td class="text-center">
@@ -49,9 +73,9 @@
                                     <a href="{{ url('/super_admin/pengguna/edit/' .$item["id"]) }}" class="btn btn-warning btn-sm">
                                         <i class="fa fa-edit">Edit</i>
                                     </a>
-                                    <form action="{{ url('/super_admin/pengguna/destroy/' . $item["id"]) }}" method="POST" style="display:inline">
+                                    <form action="{{ url('/super_admin/pengguna/destroy/' . $item["id"]) }}" method="POST" style="display:inline;">
                                         @csrf
-                                        @method("Delete")
+                                        @method("DELETE")
                                         <button type="submit" class="btn btn-danger btn-sm">
                                             <i class="fa fa-trash">Hapus</i>
                                         </button>

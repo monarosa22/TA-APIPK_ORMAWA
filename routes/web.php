@@ -50,6 +50,8 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::get("/edit/{id}", [PenggunaController::class, "edit"]);
             Route::put("/update/{id}", [PenggunaController::class, "update"]);
             Route::delete("/destroy/{id}", [PenggunaController::class,"destroy"]);
+            Route::put("/aktifkan/{id}", [PenggunaController::class,"aktifkan"]);
+            Route::put("/non_aktifkan/{id}", [PenggunaController::class,"non_aktifkan"]);
         });
 
         Route::prefix("profil_saya")->group(function () {

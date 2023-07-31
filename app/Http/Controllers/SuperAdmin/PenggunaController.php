@@ -15,9 +15,17 @@ class PenggunaController extends Controller
     {
         return DB::transaction(function() {
             $data["user"] = User::orderBy("created_at","DESC")->get();
+
             return view("super_admin.pengguna.index", $data);
         });
     }
+
+//     public function index()
+// {
+//     $data["user"] = User::orderBy("created_at","DESC")->get();
+//     return view("super_admin.pengguna.index", $data);
+// }
+
 
     public function create()
     {
@@ -66,6 +74,28 @@ class PenggunaController extends Controller
     {
         return DB::transaction(function() use ($id) {
             User::where("id", $id)->delete();
+
+            return back();
+        });
+    }
+
+    public function  aktifkan($id)
+    {
+        return DB::transaction(function() use ($id) {
+            User::where("id", $id)->update([
+                "status" => "1"
+            ]);
+
+            return back();
+        });
+    }
+
+    public function  non_aktifkan($id)
+    {
+        return DB::transaction(function() use ($id) {
+            User::where("id", $id)->update([
+                "status" => "0"
+            ]);
 
             return back();
         });
