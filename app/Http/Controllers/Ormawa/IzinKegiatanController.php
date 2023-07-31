@@ -50,13 +50,13 @@ class IzinKegiatanController extends Controller
                 "id" => Uuid::uuid4()->getHex(),
                 "user_id" => Auth::user()->id,
                 "nama_kegiatan" => $request["nama_kegiatan"],
-                "tempat" => $request["tempat_pelaksanaan"],
+                "tempat" => $request["tempat"],
                 "mulai" => $request["mulai"],
                 "akhir" => $request["akhir"],
                 "file_surat" => $data
             ]);
 
-            return redirect("/ormawa/izin_kegiatan");
+            return redirect("/ormawa/izin_kegiatan")->with("message", "Data Berhasil Ditambahkan");
         });
     }
 
@@ -103,7 +103,7 @@ class IzinKegiatanController extends Controller
                 "file_surat" => $data
             ]);
 
-            return redirect("/ormawa/izin_kegiatan");
+            return redirect("/ormawa/izin_kegiatan")->with("message", "Data Berhasil Disimpan");
         });
     }
 
@@ -113,6 +113,19 @@ class IzinKegiatanController extends Controller
             $data["detail"] = IzinKegiatan::where("id", $id)->first();
 
             return view("ormawa.izin_kegiatan.detail", $data);
+        });
+    }
+
+    public function destroy($id)
+    {
+        return DB::transaction(function () use ($id) {
+            $izin_kegiatan = IzinKegiatan::where("id", $id)->first();
+
+            Storage::delete($izin_kegiatan->file_surat);
+
+            $izin_kegiatan->delete();
+
+            return back()->with("message", "Data Berhasil Dihapus");
         });
     }
 
@@ -134,13 +147,13 @@ class IzinKegiatanController extends Controller
             //     });
             // }
 
-            public function  destroy($id)
-            {
-                return DB::transaction(function() use ($id) {
-                    IzinKegiatan::where("id", $id)->delete();
+            // public function  destroy($id)
+            // {
+            //     return DB::transaction(function() use ($id) {
+            //         IzinKegiatan::where("id", $id)->delete();
 
-                    return back();
-                });
-            }
+            //         return back();
+            //     });
+            // }
 
         }

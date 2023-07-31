@@ -15,6 +15,14 @@
                 <i class="fa fa-plus">Tambah Izin Kegiatan</i>
             </a>
             <br><br>
+
+            @if (session("message"))
+            <div class="alert alert-success">
+                <strong>Berhasil!</strong>
+                {!! session("message") !!}
+            </div>
+            @endif
+
             <div class="panel panel-headline">
                 <div class="panel-heading">
                     <h3 class="panel-title">Data Izin Kegiatan</h3>
@@ -74,8 +82,8 @@
                                     </a>
                                     <form action="{{ url('/ormawa/izin_kegiatan/destroy/' . $item["id"]) }}" method="POST" style="display:inline">
                                         @csrf
-                                        @method("Delete")
-                                        <button type="submit" class="btn btn-danger btn-sm">
+                                        @method("DELETE")
+                                        <button  onclick="return confirm('Yakin ? Apakah Anda Ingin Menghapus Data Ini ?')" type="submit" class="btn btn-danger btn-sm">
                                             <i class="fa fa-trash">Hapus</i>
                                         </button>
                                     </form>
