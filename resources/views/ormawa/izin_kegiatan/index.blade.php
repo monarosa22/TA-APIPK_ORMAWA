@@ -75,16 +75,20 @@
                                     <button class="btn btn-danger btn-sm">
                                         Tidak Disetujui
                                     </button>
+                                    @elseif($item["status"] == "3")
+                                    <button class="btn btn-info btn-sm">
+                                        Pengajuan Ulang
+                                    </button>
                                     @endif
                                 </td>
                                 <td class="text-center">
                                     <a href="{{ url('/ormawa/izin_kegiatan/show/' .$item["id"]) }}" class="btn btn-info btn-sm">
                                         <i class="fa fa-search"></i> Detail
-                                    </a> 
+                                    </a>
                                     @if ($item->status == 1)
 
                                     @elseif($item->status == 2)
-                                    <a href="{{ url('/ormawa/izin_kegiatan/edit/' .$item["id"]) }}" class="btn btn-primary btn-sm">
+                                    <a href="{{ url('/ormawa/izin_kegiatan/ulang/' .$item["id"]) }}" class="btn btn-primary btn-sm">
                                         <i class="fa fa-refresh">Pengajuan Ulang</i>
                                     </a>
                                     @elseif($item->status == 0)

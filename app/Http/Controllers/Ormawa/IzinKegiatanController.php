@@ -116,6 +116,58 @@ class IzinKegiatanController extends Controller
         });
     }
 
+    public function ulang($id)
+    {
+        return DB::transaction(function () use ($id) {
+            $data["detail"] = IzinKegiatan::where("id", $id)->first();
+
+            return view("ormawa.izin_kegiatan.ulang", $data);
+        });
+    }
+
+    public function ajukan(Request $request, $id)
+    {
+        return DB::transaction(function () use ($request, $id) {
+
+            $pesan = [
+                'required' => "Kolom :attribute harus diisi!"
+            ];
+
+            $this->validate($request, [
+                "nama_kegiatan" => "required",
+                "mulai" => "required",
+                "akhir" => "required",
+                "tempat" => "required",
+            ], $pesan);
+
+            return DB::transaction(function () use ($request, $id) {
+
+                if ($request->file("unggah_file")) {
+                    if ($request->file_lama) {
+                        Storage::delete($request->file_lama);
+                    }
+
+                    $data = $request->file("unggah_file")->store("file_surat");
+
+                } else {
+                    $data = $request->file_lama;
+                }
+
+                IzinKegiatan::where("id", $id)->update([
+                    "nama_kegiatan" => $request["nama_kegiatan"],
+                    "tempat" => $request["tempat"],
+                    "mulai" => $request["mulai"],
+                    "akhir" => $request["akhir"],
+                    "file_surat" => $data,
+                    "status" => "3"
+                ]);
+
+                return redirect("/ormawa/izin_kegiatan")->with("message", "Data Berhasil Disimpan");
+            });
+
+        });
+    }
+
     public function destroy($id)
     {
         return DB::transaction(function () use ($id) {

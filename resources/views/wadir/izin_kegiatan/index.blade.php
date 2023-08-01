@@ -73,6 +73,10 @@
                                     <button class="btn btn-danger btn-sm">
                                         Tidak Disetujui
                                     </button>
+                                    @elseif($item["status"] == "3")
+                                    <button class="btn btn-info btn-sm">
+                                        Pengajuan Ulang
+                                    </button>
                                     @endif
                                 </td>
                                 <td class="text-center">

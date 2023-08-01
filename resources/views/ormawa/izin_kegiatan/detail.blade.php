@@ -100,6 +100,27 @@ use Carbon\Carbon;
                             </div>
                         </div>
                     </div>
+                    @elseif($detail->status == 3)
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-3">Status</label>
+                            <div class="col-md-8">
+                                <button type="button" class="btn btn-info btn-sm" >Pengajuan Ulang</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-3">Komentar Sebelumnya</label>
+                            <div class="col-md-8">
+                                <strong>
+                                    <span class="text-danger">
+                                        {{ $detail->komentar }}
+                                    </span>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
                     @endif
                 </div>
             </div>

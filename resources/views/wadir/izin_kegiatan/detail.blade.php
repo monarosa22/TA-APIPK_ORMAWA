@@ -76,62 +76,122 @@ use Carbon\Carbon;
                                 </div>
                             </div>
                         </div>
+                        @if ($detail->status == 3)
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="komentar"class="control-label col-md-3">Komentar Sebelumnya</label>
+                                <div class="col-md-7">
+                                    <strong>
+                                        <span class="text-danger">
+                                            {{ $detail->komentar }}
+                                        </span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                         <div class="form-group @error("status") {{'has-error'}}@enderror ">
                             <div class="row">
                                 <label for="status" class="control-label col-md-3">Status</label>
                                 <div class="col-md-7">
-                                    <select name="status"class="form-control"  id="status">
-                                        <option value="">- Pilih -</option>
-                                        <option value="1">Disetujui</option>
-                                        <option value="2">Tidak Disetujui</option>
-                                    </select>
-                                    @error("status")
-                                    <span class="text-danger">
-                                        {{ $message }}
-                                    </span>
-                                    @enderror
+                                    @if ($detail->status != 0)
+                                        @if ($detail->status == 1)
+                                        <button class="btn btn-success btn-sm">
+                                            Disetujui
+                                        </button>
+                                        @elseif ($detail->status == 2)
+                                        <button class="btn btn-danger btn-sm">
+                                            Ditolak
+                                        </button>
+                                        @elseif ($detail->status == 3)
+                                        {{-- <button class="btn btn-info btn-sm">
+                                            Pengajuan Ulang
+                                        </button> --}}
+                                        <select name="status"class="form-control"  id="status">
+                                            <option value="">- Pilih -</option>
+                                            <option value="1">Disetujui</option>
+                                            <option value="2">Tidak Disetujui</option>
+                                        </select>
+                                        @error("status")
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                        @enderror
+                                        @endif
+                                        {{-- @else
+                                            <select name="status"class="form-control"  id="status">
+                                                <option value="">- Pilih -</option>
+                                                <option value="1">Disetujui</option>
+                                                <option value="2">Tidak Disetujui</option>
+                                            </select>
+                                            @error("status")
+                                            <span class="text-danger">
+                                                {{ $message }}
+                                            </span>
+                                            @enderror --}}
+                                    @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group" id="view_komentar" style="display: none">
-                            <div class="row">
-                                <label for="komentar" class="control-label col-md-3">Alasan
-                                </label>
-                                <div class="col-md-8">
-                                    <textarea name="komentar" class="form-control"id="komentar" rows="5" placeholder="Masukka Komentar"></textarea>
+                            @if ($detail->status == 2)
+                            <div class="form-group">
+                                <div class="row">
+                                    <label for="" class="control-label col-md-3">
+                                        Komentar
+                                    </label>
+                                    <div class="col-md-7">
+                                        <strong>
+                                            <span class="text-danger">
+                                                {{ $detail->komentar }}
+                                            </span>
+                                        </strong>
+                                    </div>
                                 </div>
                             </div>
+                            @endif
+                            <div class="form-group" id="view_komentar" style="display: none">
+                                <div class="row">
+                                    <label for="komentar" class="control-label col-md-3">Alasan
+                                    </label>
+                                    <div class="col-md-8">
+                                        <textarea name="komentar" class="form-control"id="komentar" rows="5" placeholder="Masukka Komentar"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            @if($detail->status == 1 || $detail->status == 2)
+
+                            @elseif ($detail->status == 0 || $detail->status == 3)
+                            <hr>
+                            <button type="reset" class="btn btn-danger brn-sm">
+                                <i class="fa fa-times"></i> Batal
+                            </button> &nbsp;
+                            <button type="submit" class="btn btn-primary brn-sm">
+                                <i class="fa fa-save"></i> Simpan
+                            </button>
+                            @endif
                         </div>
-                        <hr>
-                        <button type="reset" class="btn btn-danger brn-sm">
-                            <i class="fa fa-times"></i> Batal
-                        </button> &nbsp;
-                        <button type="submit" class="btn btn-primary brn-sm">
-                            <i class="fa fa-save"></i> Simpan
-                        </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-@endsection
+    @endsection
 
-@section("javascript")
+    @section("javascript")
 
     <script type="text/javascript">
         $(document).ready(function() {
-        $("#status").change(function() {
-            let status = $(this).val();
+            $("#status").change(function() {
+                let status = $(this).val();
 
-            if (status == 1) {
-                $("#view_komentar").hide();
-            } else if (status == 2) {
-                $("#view_komentar").show();
-            }
+                if (status == 1) {
+                    $("#view_komentar").hide();
+                } else if (status == 2) {
+                    $("#view_komentar").show();
+                }
+            });
         });
-    });
     </script>
 
-@endsection
+    @endsection
