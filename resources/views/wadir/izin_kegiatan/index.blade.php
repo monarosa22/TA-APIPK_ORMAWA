@@ -11,6 +11,14 @@
 <div class="main">
     <div class="main-content">
         <div class="container-fluid" style="padding-top: 20px">
+
+            @if (session("message"))
+            <div class="alert alert-success">
+                <strong>Berhasil!</strong>
+                {!! session("message") !!}
+            </div>
+            @endif
+
             <div class="panel panel-headline">
                 <div class="panel-heading">
                     <h3 class="panel-title">Data Izin Kegiatan</h3>
@@ -19,14 +27,14 @@
                     <table class="table table-bordered" id="example">
                         <thead>
                             <tr>
-                                <th class="text-center">No.</th>
-                                <th class="text-center">Nama ORMAWA</th>
-                                <th class="text-center">Nama Kegiatan</th>
-                                <th class="text-center">File Surat</th>
-                                <th class="text-center">File Surat Balasan</th>
-                                <th class="text-center">Tempat</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Aksi</th>
+                                <th style="text-align: center;">No.</th>
+                                <th>Nama ORMAWA</th>
+                                <th>Nama Kegiatan</th>
+                                <th style="text-align: center;">File Surat</th>
+                                <th style="text-align: center;">File Surat Balasan</th>
+                                <th style="text-align: center;">Tempat</th>
+                                <th style="text-align: center;">Status</th>
+                                <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,11 +63,15 @@
                                 <td class="text-center">
                                     @if ($item["status"] == "0")
                                     <button class="btn btn-warning btn-sm">
-                                        <i class="fa fa-times"></i> Belum dikonfirmasi
+                                        Belum dikonfirmasi
                                     </button>
                                     @elseif ($item["status"] == "1")
                                     <button class="btn btn-success btn-sm">
-                                        <i class="fa fa-check"></i> Sudah dikonfirmasi
+                                        Disetujui
+                                    </button>
+                                    @elseif ($item["status"] == "2")
+                                    <button class="btn btn-danger btn-sm">
+                                        Tidak Disetujui
                                     </button>
                                     @endif
                                 </td>

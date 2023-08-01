@@ -61,6 +61,46 @@ use Carbon\Carbon;
                             </div>
                         </div>
                     </div>
+                    @if ($detail->status == 0)
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-3">Status</label>
+                            <div class="col-md-8">
+                                <button type="button" class="btn btn-warning btn-sm" >Belum Dikonfirmasi</button>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif ($detail->status == 1)
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-3">Status</label>
+                            <div class="col-md-8">
+                                <button type="button" class="btn btn-success btn-sm" >Disetujui</button>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif ($detail->status == 2)
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-3">Status</label>
+                            <div class="col-md-8">
+                                <button type="button" class="btn btn-danger btn-sm" >Tidak Disetujui</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-3">Komentar</label>
+                            <div class="col-md-8">
+                                <strong>
+                                    <span class="text-danger">
+                                        {{ $detail->komentar }}
+                                    </span>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

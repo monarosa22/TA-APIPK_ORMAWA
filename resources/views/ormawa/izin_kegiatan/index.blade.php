@@ -65,21 +65,36 @@
                                 <td class="text-center">
                                     @if ($item["status"] == "0")
                                     <button class="btn btn-warning btn-sm">
-                                        <i class="fa fa-times"></i> Belum dikonfirmasi
+                                        Belum dikonfirmasi
                                     </button>
                                     @elseif ($item["status"] == "1")
                                     <button class="btn btn-success btn-sm">
-                                        <i class="fa fa-check"></i> Sudah dikonfirmasi
+                                        Disetujui
+                                    </button>
+                                    @elseif ($item["status"] == "2")
+                                    <button class="btn btn-danger btn-sm">
+                                        Tidak Disetujui
                                     </button>
                                     @endif
                                 </td>
                                 <td class="text-center">
                                     <a href="{{ url('/ormawa/izin_kegiatan/show/' .$item["id"]) }}" class="btn btn-info btn-sm">
                                         <i class="fa fa-search"></i> Detail
+                                    </a> 
+                                    @if ($item->status == 1)
+
+                                    @elseif($item->status == 2)
+                                    <a href="{{ url('/ormawa/izin_kegiatan/edit/' .$item["id"]) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-refresh">Pengajuan Ulang</i>
                                     </a>
+                                    @elseif($item->status == 0)
                                     <a href="{{ url('/ormawa/izin_kegiatan/edit/' .$item["id"]) }}" class="btn btn-warning btn-sm">
                                         <i class="fa fa-edit">Edit</i>
                                     </a>
+                                    @endif
+                                    @if ($item["status"] != 0)
+
+                                    @else
                                     <form action="{{ url('/ormawa/izin_kegiatan/destroy/' . $item["id"]) }}" method="POST" style="display:inline">
                                         @csrf
                                         @method("DELETE")
@@ -87,6 +102,7 @@
                                             <i class="fa fa-trash">Hapus</i>
                                         </button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

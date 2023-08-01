@@ -76,15 +76,29 @@ use Carbon\Carbon;
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group @error("status") {{'has-error'}}@enderror ">
                             <div class="row">
                                 <label for="status" class="control-label col-md-3">Status</label>
                                 <div class="col-md-7">
                                     <select name="status"class="form-control"  id="status">
                                         <option value="">- Pilih -</option>
                                         <option value="1">Disetujui</option>
-                                        <option value="2">Ditolak</option>
+                                        <option value="2">Tidak Disetujui</option>
                                     </select>
+                                    @error("status")
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="view_komentar" style="display: none">
+                            <div class="row">
+                                <label for="komentar" class="control-label col-md-3">Alasan
+                                </label>
+                                <div class="col-md-8">
+                                    <textarea name="komentar" class="form-control"id="komentar" rows="5" placeholder="Masukka Komentar"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -101,5 +115,23 @@ use Carbon\Carbon;
         </div>
     </div>
 </div>
+
+@endsection
+
+@section("javascript")
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $("#status").change(function() {
+            let status = $(this).val();
+
+            if (status == 1) {
+                $("#view_komentar").hide();
+            } else if (status == 2) {
+                $("#view_komentar").show();
+            }
+        });
+    });
+    </script>
 
 @endsection

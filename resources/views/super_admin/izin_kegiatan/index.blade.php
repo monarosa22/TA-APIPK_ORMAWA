@@ -19,14 +19,14 @@
                     <table class="table table-bordered" id="example">
                         <thead>
                             <tr>
-                                <th class="text-center">No.</th>
-                                <th class="text-center">Nama ORMAWA</th>
-                                <th class="text-center">Nama Kegiatan</th>
-                                <th class="text-center">File Surat</th>
-                                <th class="text-center">File Surat Balasan</th>
-                                <th class="text-center">Tempat</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Aksi</th>
+                                <th style="text-align: center;">No.</th>
+                                <th>Nama ORMAWA</th>
+                                <th>Nama Kegiatan</th>
+                                <th style="text-align: center;">File Surat</th>
+                                <th style="text-align: center;">File Surat Balasan</th>
+                                <th style="text-align: center;">Tempat</th>
+                                <th style="text-align: center;">Status</th>
+                                <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,11 +55,11 @@
                                 <td class="text-center">
                                     @if ($item["status"] == "0")
                                     <button class="btn btn-warning btn-sm">
-                                        <i class="fa fa-times"></i> Belum dikonfirmasi
+                                        Belum dikonfirmasi
                                     </button>
                                     @elseif ($item["status"] == "1")
                                     <button class="btn btn-success btn-sm">
-                                        <i class="fa fa-check"></i> Sudah dikonfirmasi
+                                        Disetujui
                                     </button>
                                     @endif
                                 </td>

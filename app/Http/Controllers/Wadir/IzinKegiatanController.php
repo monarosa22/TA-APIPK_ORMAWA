@@ -13,7 +13,7 @@ class IzinKegiatanController extends Controller
     public  function index()
     {
         return DB::transaction(function() {
-            $data["izin_kegiatan"] = IzinKegiatan::get();
+            $data["izin_kegiatan"] = IzinKegiatan::orderBy("created_at", "ASC")->get();
 
             return view('wadir.izin_kegiatan.index', $data);
         });
@@ -48,13 +48,30 @@ class IzinKegiatanController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $pesan = [
+            'required' => "Kolom :attribute harus diisi!"
+        ];
+
+        $this->validate($request, [
+            "status" => "required"
+        ], $pesan);
+
         return DB::transaction(function() use ($request, $id) {
+
+            if ($request->komentar) {
+                $komentar = $request->komentar;
+            } else {
+                $komentar = null;
+            }
+
             IzinKegiatan::where("id", $id)->update([
                 "status" => $request["status"],
-                "user_validasi_id" => Auth::user()->id
+                "user_validasi_id" => Auth::user()->id,
+                "komentar" => $komentar
             ]);
 
-            return redirect("/wadir/izin_kegiatan");
+            return redirect("/wadir/izin_kegiatan")->with("message", "Data Berhasil Dikonfirmasi");
         });
     }
 }
