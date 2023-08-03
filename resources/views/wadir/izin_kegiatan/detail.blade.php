@@ -42,8 +42,8 @@ use Carbon\Carbon;
                                     File Surat Izin
                                 </label>
                                 <div class="col-md-7">
-                                    <a href="" class="btn btn-primary btn-sm">
-                                        <i target="_blank" class="fa fa-download"></i> Unduh File
+                                    <a target="_blank" href="{{ url('/wadir/izin_kegiatan/download/'.$detail->id) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-download"></i> Unduh File
                                     </a>
                                 </div>
                             </div>
@@ -118,17 +118,17 @@ use Carbon\Carbon;
                                         </span>
                                         @enderror
                                         @endif
-                                        {{-- @else
+                                        @else
                                             <select name="status"class="form-control"  id="status">
                                                 <option value="">- Pilih -</option>
                                                 <option value="1">Disetujui</option>
                                                 <option value="2">Tidak Disetujui</option>
                                             </select>
-                                            @error("status")
+                                        @error("status")
                                             <span class="text-danger">
                                                 {{ $message }}
                                             </span>
-                                            @enderror --}}
+                                        @enderror
                                     @endif
                                     </div>
                                 </div>

@@ -11,6 +11,14 @@
 <div class="main">
     <div class="main-content">
         <div class="container-fluid" style="padding-top: 30px">
+
+            @if (session("message"))
+            <div class="alert alert-success">
+                <strong>Berhasil!</strong>
+                {!! session("message") !!}
+            </div>
+            @endif
+
             <div class="panel panel-headline">
                 <div class="panel-heading">
                     <h3 class="panel-title">Data Izin Kegiatan</h3>
@@ -46,7 +54,7 @@
                                         <i>Belum ada Surat Balasan</i>
                                     </strong>
                                     @else
-                                    <a target="_blank" href="{{ url('/super_admin/izin_kegiatan/download/' .$item->id) }}">
+                                    <a target="_blank" href="{{ url('/super_admin/izin_kegiatan/balasan/' .$item->id) }}">
                                         <i class="fa fa-download"></i>
                                     </a>
                                     @endif

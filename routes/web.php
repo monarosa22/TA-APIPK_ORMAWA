@@ -33,7 +33,7 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::get("/", [SuperAdminIzinKegiatanController::class, "index"]);
             Route::get("/show/{id}", [SuperAdminIzinKegiatanController::class, "show"]);
             Route::get("/download/{id}", [SuperAdminIzinKegiatanController::class, "download_surat"]);
-            // Route::get("/download/{id}", [SuperAdminIzinKegiatanController::class, "surat_balasan"]);
+            Route::get("/balasan/{id}", [SuperAdminIzinKegiatanController::class, "surat_balasan"]);
             Route::put("/update/{id}", [SuperAdminIzinKegiatanController::class, "update"]);
         });
 
@@ -72,7 +72,7 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::get("/", [WadirIzinKegiatanController::class, "index"]);
             Route::get("/show/{id}", [WadirIzinKegiatanController::class, "show"]);
             Route::get("/download/{id}", [WadirIzinKegiatanController::class, "download_surat"]);
-            // Route::get("/download/{id}", [WadirIzinKegiatanController::class, "surat_balasan"]);
+            Route::get("/balasan/{id}", [WadirIzinKegiatanController::class, "surat_balasan"]);
             Route::put("/{id}", [WadirIzinKegiatanController::class, "update"]);
         });
 
@@ -108,7 +108,7 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::get("/download/{id}", [IzinKegiatanController::class, "download_surat"]);
             Route::delete("/destroy/{id}", [IzinKegiatanController::class, "destroy"]);
             Route::get("/download/{id}", [IzinKegiatanController::class, "download_surat"]);
-            // Route::get("/download/{id}", [IzinKegiatanController::class, "surat_balasan"]);
+            Route::get("/balasan/{id}", [IzinKegiatanController::class, "surat_balasan"]);
         });
 
         Route::prefix("laporan_kegiatan")->group(function () {

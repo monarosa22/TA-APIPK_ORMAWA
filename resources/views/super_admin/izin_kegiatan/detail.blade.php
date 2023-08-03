@@ -42,8 +42,8 @@ use Carbon\Carbon;
                                     File Surat Izin
                                 </label>
                                 <div class="col-md-7">
-                                    <a href="" class="btn btn-primary btn-sm">
-                                        <i target="_blank" class="fa fa-download"></i> Unduh File
+                                    <a target="_blank" href="{{ url('/super_admin/izin_kegiatan/download/'.$detail->id) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-download"></i> Unduh File
                                     </a>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@ use Carbon\Carbon;
                                 <div class="col-md-7">
                                     @if ($detail["status"] == "1")
                                     <button class="btn btn-success btn-sm">
-                                        <i class="fa fa-check">Disetujui</i>
+                                        Disetujui
                                     </button>
                                     @else
 
@@ -92,12 +92,21 @@ use Carbon\Carbon;
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label for="file_surat_balasan" class="control-label col-md-3">Unggah Surat Balasan</label>
+                                <label for="file_surat_balasan" class="control-label col-md-3">Surat Balasan</label>
                                 <div class="col-md-7">
+                                    @if (!empty($detail->file_surat_balasan))
+                                    <a target="_blank" href="{{ url('/super_admin/izin_kegiatan/balasan/'.$detail->id) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-download"></i> Unduh File
+                                    </a>
+                                    @else
                                     <input type="file" class="form-control" name="file_surat_balasan" id="file_surat_balasan">
+                                    @endif
                                 </div>
                             </div>
                         </div>
+                        @if (!empty($detail->file_surat_balasan))
+
+                        @else
                         <hr>
                         <button type="reset" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i> Batal
@@ -105,6 +114,8 @@ use Carbon\Carbon;
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-save"></i> Simpan
                         </button>
+                        @endif
+
                     </div>
                 </form>
             </div>

@@ -56,7 +56,7 @@
                                         <i>Belum ada Surat Balasan</i>
                                     </strong>
                                     @else
-                                    <a target="_blank" href="{{ url('/ormawa/izin_kegiatan/download/' .$item->id) }}">
+                                    <a target="_blank" href="{{ url('/ormawa/izin_kegiatan/balasan/' .$item->id) }}">
                                         <i class="fa fa-download"></i>
                                     </a>
                                     @endif

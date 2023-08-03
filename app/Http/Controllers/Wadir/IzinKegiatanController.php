@@ -37,14 +37,14 @@ class IzinKegiatanController extends Controller
         });
     }
 
-    // public function surat_balasan($id)
-    // {
-    //     return DB::transaction(function () use ($id) {
-    //         $data = IzinKegiatan::where("id", $id)->first();
+    public function surat_balasan($id)
+    {
+        return DB::transaction(function () use ($id) {
+            $data = IzinKegiatan::where("id", $id)->first();
 
-    //         return response()->download("storage/".$data["file_surat_balasan"]);
-    //     });
-    // }
+            return response()->download("storage/".$data["file_surat_balasan"]);
+        });
+    }
 
     public function update(Request $request, $id)
     {
