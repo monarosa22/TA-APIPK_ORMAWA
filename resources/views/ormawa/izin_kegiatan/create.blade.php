@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section("title", "Tambah Izin Kegiatan")
+
 @section('content')
 
 <div class="main">

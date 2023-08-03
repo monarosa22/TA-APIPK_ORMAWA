@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section("title", "Ganti Password")
+
 @section('content')
 
 <div class="main">

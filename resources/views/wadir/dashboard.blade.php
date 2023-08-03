@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section("title", "Dashboard")
+
 @section('content')
 
     <div class="main" style="padding-top: 120px;">

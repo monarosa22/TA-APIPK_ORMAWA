@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section("title", "Edit Data Pengguna")
+
 @section('content')
 
 <div class="main">

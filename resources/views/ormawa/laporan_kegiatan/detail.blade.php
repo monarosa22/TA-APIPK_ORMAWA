@@ -3,6 +3,8 @@ use Carbon\Carbon;
 @endphp
 @extends('layouts.main')
 
+@section("title", "Detail Laporan Kegiatan")
+
 @section('content')
 
 <div class="main">
@@ -64,22 +66,45 @@ use Carbon\Carbon;
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group @error("file_lpj") {{'has-error'}}@enderror">
                             <div class="row">
-                                <label for="file_lpj" class="control-label col-md-3"> Unggah File LPJ </label>
+                                <label for="file_lpj" class="control-label col-md-3"> File LPJ </label>
                                 <div class="col-md-7">
+                                    @if (!empty($detail->laporan_kegiatan))
+                                    <a target="_blank" href="{{ url('/ormawa/laporan_kegiatan/lpj/'.$detail["laporan_kegiatan"]["id"]) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-download"></i> Unduh File
+                                    </a>
+                                    @else
                                     <input type="file" class="form-control" name="file_lpj" id="file_lpj">
+                                    @error("file_lpj")
+                                        <span class="text-danger">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group @error("foto_dokumentasi") {{'has-error'}}@enderror">
                             <div class="row">
-                                <label for="foto_dokumentasi" class="control-label col-md-3"> Unggah Foto Dokumentasi </label>
+                                <label for="foto_dokumentasi" class="control-label col-md-3"> Foto Dokumentasi </label>
                                 <div class="col-md-7">
+                                    @if (!empty($detail->laporan_kegiatan))
+                                    <img src="{{ url('/storage/'.$detail->laporan_kegiatan->foto_dokumentasi) }}" style="width:250px; height:250px">
+                                    @else
                                     <input type="file" class="form-control" name="foto_dokumentasi" id="foto_dokumentasi">
+                                    @error("foto_dokumentasi")
+                                        <span class="text-danger">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
+                                    @endif
                                 </div>
                             </div>
                         </div>
+                        @if (!empty($detail->laporan_kegiatan))
+
+                        @else
                         <hr>
                         <button type="reset" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i> Batal
@@ -87,6 +112,7 @@ use Carbon\Carbon;
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-save"></i> Simpan
                         </button>
+                        @endif
                     </div>
                 </form>
             </div>

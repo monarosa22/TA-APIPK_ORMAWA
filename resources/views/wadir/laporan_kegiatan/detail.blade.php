@@ -3,6 +3,8 @@ use Carbon\Carbon;
 @endphp
 @extends('layouts.main')
 
+@section("title", "Detail Laporan Kegiatan")
+
 @section('content')
 
 <div class="main">
@@ -99,7 +101,7 @@ use Carbon\Carbon;
                                     </i>
                                 </strong>
                                 @else
-                                <img src="{{ url('storage/' .$detail["laporan_kegiatan"]["foto_dokumentasi"]) }}" style="width:150px; height:150px;">
+                                <img src="{{ url('storage/' .$detail["laporan_kegiatan"]["foto_dokumentasi"]) }}" style="width:250px; height:250px;">
                                 @endif
                             </div>
                         </div>

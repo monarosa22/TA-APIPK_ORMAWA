@@ -21,15 +21,6 @@ class LaporanKegiatanController extends Controller
         });
     }
 
-    //  public function index()
-    // {
-    //     return DB::transaction(function (){
-    //         $data["izin_kegiatan"] = IzinKegiatan::where("user_id", Auth::user()->id)->get();
-
-    //         return view("ormawa.izin_kegiatan.index", $data);
-    //     });
-    // }
-
     public function show($id)
     {
         return DB::transaction(function () use ($id) {
@@ -41,6 +32,15 @@ class LaporanKegiatanController extends Controller
 
     public function update(Request $request, $id)
     {
+        $pesan = [
+            'required' => "Kolom :attribute harus diisi!"
+        ];
+
+        $this->validate($request, [
+            "file_lpj" => "required",
+            "foto_dokumentasi" => "required",
+        ], $pesan);
+
         return DB::transaction(function () use ($id, $request) {
 
             if ($request->file("file_lpj")) {
@@ -59,7 +59,7 @@ class LaporanKegiatanController extends Controller
                 "foto_dokumentasi" => $foto_dokumentasi,
             ]);
 
-            return redirect("/ormawa/laporan_kegiatan");
+            return redirect("/ormawa/laporan_kegiatan")->with("message", "Data Berhasil Disimpan");
         });
     }
 
@@ -69,6 +69,15 @@ class LaporanKegiatanController extends Controller
             $laporan_kegiatan = LaporanKegiatan::where("id", $id_laporan)->first();
 
             return response()->download("storage/" .$laporan_kegiatan["file_lpj"]);
+        });
+    }
+
+    public function lpj($id)
+    {
+        return DB::transaction(function() use ($id) {
+            $laporan_kegiatan = LaporanKegiatan::where("id", $id)->first();
+
+            return response()->download("storage/" .$laporan_kegiatan->file_lpj);
         });
     }
 }

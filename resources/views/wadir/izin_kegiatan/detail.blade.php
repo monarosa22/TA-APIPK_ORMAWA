@@ -3,6 +3,8 @@ use Carbon\Carbon;
 @endphp
 @extends('layouts.main')
 
+@section("title", "Dtail Izin Kegiatan")
+
 @section('content')
 
 <div class="main">

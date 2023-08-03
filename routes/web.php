@@ -116,6 +116,7 @@ Route::group(["middleware" => ["is_autentikasi"]], function () {
             Route::get("/show/{id}", [ LaporanKegiatanController::class, "show"]);
             Route::put("/update/{id}", [ LaporanKegiatanController::class, "update"]);
             Route::get("/laporan/{id}", [ LaporanKegiatanController::class, "laporan"]);
+            Route::get("/lpj/{id}", [ LaporanKegiatanController::class, "lpj"]);
         });
 
         Route::prefix("profil_saya")->group(function () {

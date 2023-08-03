@@ -11,6 +11,14 @@
 <div class="main">
     <div class="main-content">
         <div class="container-fluid" style="padding-top: 30px">
+
+            @if (session("message"))
+            <div class="alert alert-success">
+                <strong>Berhasil!</strong>
+                {!! session("message") !!}
+            </div>
+            @endif
+
             <div class="panel panel-headline">
                 <div class="panel-heading">
                     <h3 class="panel-title">Data Laporan Kegiatan</h3>
@@ -19,13 +27,13 @@
                     <table class="table table-bordered" id="example">
                         <thead>
                             <tr>
-                                <th class="text-center">No.</th>
-                                <th class="text-center">Nama Kegiatan</th>
-                                <th class="text-center">File Laporan</th>
-                                <th class="text-center">File Gambar</th>
+                                <th style="text-align: center;">No.</th>
+                                <th>Nama Kegiatan</th>
+                                <th style="text-align: center;">File Laporan</th>
+                                <th style="text-align: center;">Foto Dokumentasi</th>
                                 {{-- <th class="text-center">Tempat</th> --}}
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Aksi</th>
+                                <th style="text-align: center;">Status</th>
+                                <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,18 +42,18 @@
                                 <td class="text-center">{{ $loop->iteration }}.</td>
                                 <td>{{ $item["nama_kegiatan"] }}</td>
                                 {{-- <td class="text-center">{{ $item["tempat"] }}</td> --}}
-                                <td class="text-center">
+                                <td align="center">
                                     @if (empty($item["laporan_kegiatan"]["file_lpj"]))
                                     <strong>
                                         <i>Belum Ada File Laporan</i>
                                     </strong>
                                     @else
-                                    <a target="_blank" href="{{ url('/ormawa/laporan_kegiatan/laporan/' .$item["laporan_kegiatan"]["id"]) }}">
+                                    <a target="_blank" href="{{ url('/ormawa/laporan_kegiatan/lpj/' .$item["laporan_kegiatan"]["id"]) }}">
                                         <i class="fa fa-download"></i>
                                     </a>
                                     @endif
                                 </td>
-                                <td class="text-center">
+                                <td align="center">
                                     @if (empty($item["laporan_kegiatan"]["foto_dokumentasi"]))
                                         <strong>
                                             <i>
@@ -56,7 +64,17 @@
                                     <img src="{{ url('storage/' . $item["laporan_kegiatan"]["foto_dokumentasi"]) }}" style="width:50px; height:50px">
                                     @endif
                                 </td>
-                                <td>-</td>
+                                <td class="text-center">
+                                    @if ($item["status"] == "0")
+                                    <button class="btn btn-warning btn-sm">
+                                        Belum Selesai
+                                    </button>
+                                    @elseif ($item["status"] == "1")
+                                    <button class="btn btn-success btn-sm">
+                                        Selesai
+                                    </button>
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <a href="{{ url('/ormawa/laporan_kegiatan/show/' .$item["id"]) }}" class="btn btn-info btn-sm">
                                         <i class="fa fa-search"></i> Detail

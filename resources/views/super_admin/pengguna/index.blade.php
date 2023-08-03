@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section("title", "Data Pengguna")
+
 @section("css")
 
 <link rel="stylesheet" href="{{ url('/css/bootstrap.min.css') }}">
