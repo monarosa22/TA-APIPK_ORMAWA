@@ -25,6 +25,13 @@
             </div>
             @endif
 
+            @if (session("message_error"))
+            <div class="alert alert-danger">
+                <strong>Maaf!</strong>
+                {!! session("message_error") !!}
+            </div>
+            @endif
+
             <div class="panel panel-headline">
                 <div class="panel-heading">
                     <h3 class="panel-title">Data Izin Kegiatan</h3>
