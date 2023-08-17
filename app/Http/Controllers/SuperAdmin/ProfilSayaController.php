@@ -44,7 +44,7 @@ class ProfilSayaController extends Controller
                 "foto" => $data
             ]);
 
-            return back();
+            return back()->with("success", "Profil Berhasil diperbarui");
         });
     }
 }

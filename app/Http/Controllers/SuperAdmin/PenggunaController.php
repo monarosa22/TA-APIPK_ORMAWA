@@ -44,7 +44,7 @@ class PenggunaController extends Controller
                 "role" => $request["role"],
                 "deskripsi" => $request["deskripsi"]
             ]);
-                return redirect("/super_admin/pengguna");
+                return redirect("/super_admin/pengguna")->with("message", "Data Berhasil Ditambahkan");
         });
     }
 
@@ -66,7 +66,7 @@ class PenggunaController extends Controller
                 "deskripsi" => $request->deskripsi
             ]);
 
-            return redirect("/super_admin/pengguna");
+            return redirect("/super_admin/pengguna")->with("message", "Data Berhasil Disimpan");
         });
     }
 
@@ -86,7 +86,7 @@ class PenggunaController extends Controller
                 "status" => "1"
             ]);
 
-            return back();
+            return back()->with("message", "Data Berhasil Dihapus");
         });
     }
 

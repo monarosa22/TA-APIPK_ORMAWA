@@ -28,7 +28,7 @@ class GantiPasswordController extends Controller
                     "password" => bcrypt($request->password_baru)
                 ]);
 
-                return back()->with("success", "Password Berhasil diperbarui!");
+                return back()->with("success", "Password Berhasil diperbarui");
             }
         });
     }

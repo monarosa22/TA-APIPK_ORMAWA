@@ -10,6 +10,7 @@
 
             @if (session("success"))
             <div class="alert alert-success">
+                <strong>Berhasil!</strong>
                 {!! session("success") !!}
             </div>
 

@@ -7,6 +7,14 @@
 <div class="main">
     <div class="main-content">
         <div class="container-fluid" style="padding-top: 30px">
+
+            @if (session("success"))
+            <div class="alert alert-success">
+                <strong>Berhasil!</strong>
+                {!! session("success") !!}
+            </div>
+            @endif
+            
             <div class="panel panel-headline">
                 <div class="panel-heading">
                     <h3 class="panel-title">Profil Saya</h3>

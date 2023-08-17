@@ -13,6 +13,14 @@
 <div class="main">
     <div class="main-content">
         <div class="container-fluid" style="padding-top: 20px">
+
+            @if (session("message"))
+            <div class="alert alert-success">
+                <strong>Berhasil!</strong>
+                {!! session("message") !!}
+            </div>
+            @endif
+            
             {{-- <button href="{{url('/super_admin/pengguna/create') }}" class="btn btn-primary btn-sm">
                 <i class="fa fa-plus">Tambah</i>
             </button> --}}

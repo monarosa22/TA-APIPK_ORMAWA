@@ -17,7 +17,7 @@ class ProfilSayaController extends Controller
             return view("wadir.profil_saya.index");
         });
     }
-    
+
     public function update(Request $request, $id_user)
     {
         return DB::transaction(function() use ($request, $id_user){
@@ -44,7 +44,7 @@ class ProfilSayaController extends Controller
                 "foto" => $data
             ]);
 
-            return back();
+            return back()->with("success", "Profil Berhasil diperbarui");
         });
     }
 }
